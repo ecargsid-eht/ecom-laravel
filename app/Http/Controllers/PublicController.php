@@ -2,16 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
 {
     public function index(){
-        return view("public.home");
+        $data['products'] = Product::all();
+        $data['categories'] = Category::all();
+        return view("public.home",$data);
     }
 
     public function singleView($p_id){
-        return view("public.viewProduct");
+        $data['product'] = Product::find($p_id);
+        $data['categories'] = Category::all();
+        return view("public.viewProduct",$data);
     }
 
     public function cart(Request $request){
