@@ -42,7 +42,7 @@ class CategoryController extends Controller
     }
 
     public function update(Request $req, Category $category){
-        $category->category_title = $req->category_title;
+        $category->cat_title = $req->cat_title;
         $category->save();
         return redirect()->route("category.index");
     }

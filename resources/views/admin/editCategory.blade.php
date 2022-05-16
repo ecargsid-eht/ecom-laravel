@@ -10,7 +10,7 @@
             <h3>Update Category Here</h3>
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('category.store') }}" method="post">
+                    <form action="{{ route('category.update',[$category]) }}" method="post">
                         @csrf
                         @method("patch")
                         <div class="mb-3">

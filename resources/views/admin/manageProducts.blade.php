@@ -12,7 +12,7 @@
                         <h6 class="fs-4">Manage Products</h6>
                     </div>
                     <div class="col-4">
-                        <a href="" class="btn btn-success">Add new Product</a>
+                        <a href="{{ route('product.create') }}" class="btn btn-success">Add new Product</a>
                     </div>
                 </div>
                 <table class="table">
@@ -26,6 +26,21 @@
                         <th>Image</th>
                         <th>Action</th>
                     </tr>
+
+                    @foreach ($products as $pro)
+                        <tr>
+                            <td>{{$pro->id}}</td>
+                            <td>{{$pro->title}}</td>
+                            <td>{{$pro->brand->brand_title}}</td>
+                            <td>{{$pro->category->cat_title}}</td>
+                            <td>{{$pro->price}}</td>
+                            <td>{{$pro->qty}}</td>
+                            <td><img src="../images/{{$pro->image}}" alt="" width="30px"></td>
+                            <td>
+                                <a href="{{ route('product.edit', [$pro]) }}" class="btn btn-success">Edit</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </table>
             </div>
         </div>

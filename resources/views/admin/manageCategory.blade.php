@@ -37,7 +37,11 @@
                 <tr>
                     <td>{{$cat->id}}</td>
                     <td>{{$cat->cat_title}}</td>
-                    <td>{{$cat->parent_id}}</td>
+                    @if ($cat->parent_id == 0)
+                        <td>main</td>
+                    @else
+                    <td>{{$cat->parent->cat_title}}</td>
+                    @endif
                     <td>
                         <form action="{{ route('category.destroy',$cat) }}" class="d-inline" method="post">
                             @csrf
